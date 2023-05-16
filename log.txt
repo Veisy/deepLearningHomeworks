@@ -1,0 +1,139 @@
+Average loss at step  0 :  238.28741455078125
+Nearest to or: slums., tougher,, id="207000">The, Harvard,</seekvideo>, diversity., id="234000">But, DMCA, "Why,
+Nearest to your: fractals, adrenaline, celebrate,, id="46000">And, addition,, rim, neck, cool.",
+Nearest to things: investigation,, effective,, id="362000">The, corporations</seekvideo>, solid, exhibition,, similarity, rosy,
+Nearest to this: garden</seekvideo>, professions, remarkable,</seekvideo>, 53, die</seekvideo>, recruitment, 1,, later?,
+Nearest to to: counter</seekvideo>, id="470000">But, creation., dictate, id="190000">to, id="1012000">And, honest., scared,
+Nearest to more: switching, overhead, liked,</seekvideo>, Maureen, noises)</seekvideo>, encouraging., fingers, Friedman,,
+Nearest to an: résumé, learn,</seekvideo>, Sputnik, transformational, id="318000">that, id="105000">to, race,, home?"</seekvideo>,
+Nearest to for: emergent, designed, 18,</seekvideo>, beautiful</seekvideo>, clusters, glial, opportunity., skills,,
+Average loss at step  2000 :  112.9450543870926
+Average loss at step  4000 :  52.3073286447525
+Average loss at step  6000 :  33.11085869383812
+Average loss at step  8000 :  23.321788536787032
+Average loss at step  10000 :  17.442687573432924
+Nearest to or: "Why, diversity., belief, demonstration, land, democracy,</seekvideo>, places.</seekvideo>, them?,
+Nearest to your: celebrate,, are, thought,, be, left., adrenaline, require, granted,
+Nearest to things: solid, space, motion, unite, case,</seekvideo>, <seekvideo, predict, liquid,
+Nearest to this: the, 1,, a, line, recruitment, his, did, 53,
+Nearest to to: and, UNK, that, the, of, in, <seekvideo, a,
+Nearest to more: person, history,</seekvideo>, these</seekvideo>, perception, switching, made</seekvideo>, fingers, speed.,
+Nearest to an: the, a, learn,</seekvideo>, wrong., Organization, browser, race,, governments,
+Nearest to for: designed, opportunity., to, just, chamber,, Today,, participation, Beveridge,
+Average loss at step  12000 :  13.57366400551796
+Average loss at step  14000 :  11.285214968442917
+Average loss at step  16000 :  9.511367599010468
+Average loss at step  18000 :  8.149685255289079
+Average loss at step  20000 :  7.53869228553772
+Nearest to or: and, "Why, democracy,</seekvideo>, demonstration, slums., belief, diversity., land,
+Nearest to your: the, and, a, celebrate,, our, their, space?, left.,
+Nearest to things: solid, effective,, rosy, similarity, pieces.</seekvideo>, corporations</seekvideo>, motion, unite,
+Nearest to this: the, a, UNK, that, 1,, line, 53, recruitment,
+Nearest to to: and, UNK, that, in, ♪, <seekvideo, of, could,
+Nearest to more: and, history,</seekvideo>, these</seekvideo>, person, that, fingers, cycle</seekvideo>, bald,
+Nearest to an: a, the, learn,</seekvideo>, Organization, résumé, wrong., rig,, robust,,
+Nearest to for: of, in, to, and, UNK, designed, is, just,
+Average loss at step  22000 :  6.940434218883515
+Average loss at step  24000 :  6.404649845123291
+Average loss at step  26000 :  6.175290586709976
+Average loss at step  28000 :  5.92387051153183
+Average loss at step  30000 :  5.689169022321701
+Nearest to or: and, "Why, democracy,</seekvideo>, demonstration, land, slums., of, belief,
+Nearest to your: the, their, our, space?, a, left., celebrate,, adrenaline,
+Nearest to things: solid, pieces.</seekvideo>, similarity, rosy, effective,, corporations</seekvideo>, predict, motion,
+Nearest to this: the, a, that, UNK, 1,, 53, line, ♪,
+Nearest to to: and, that, UNK, ♪, in, could, can, <seekvideo,
+Nearest to more: history,</seekvideo>, these</seekvideo>, switching, and, overhead, UNK, noises)</seekvideo>, that,
+Nearest to an: a, the, learn,</seekvideo>, résumé, governments, Organization, browser, upside,
+Nearest to for: in, of, to, is, UNK, and, designed, Beveridge,
+Average loss at step  32000 :  6.47390201997757
+Average loss at step  34000 :  6.854204208493233
+Average loss at step  36000 :  6.476851410388947
+Average loss at step  38000 :  5.963666974306107
+Average loss at step  40000 :  5.713752016067505
+Nearest to or: and, "Why, in, slums., democracy,</seekvideo>, demonstration, neat, belief,
+Nearest to your: their, the, our, my, a, space?, left., and,
+Nearest to things: similarity, pieces.</seekvideo>, rosy, effective,, solid, corporations</seekvideo>, unite, predict,
+Nearest to this: the, a, that, it, UNK, ♪, 1,, 53,
+Nearest to to: and, that, UNK, could, ♪, for, can, la,,
+Nearest to more: history,</seekvideo>, switching, these</seekvideo>, overhead, trademark, ethics, and, noises)</seekvideo>,
+Nearest to an: a, the, learn,</seekvideo>, browser, résumé, governments, robust,, upside,
+Nearest to for: of, in, to, and, is, UNK, designed, intuition</seekvideo>,
+Average loss at step  42000 :  5.460677443027496
+Average loss at step  44000 :  5.316114057183266
+Average loss at step  46000 :  5.175713445067406
+Average loss at step  48000 :  5.136628803253174
+Average loss at step  50000 :  5.0410635036230085
+Nearest to or: and, in, "Why, slums., demonstration, democracy,</seekvideo>, neat, for,
+Nearest to your: their, the, our, my, space?, a, fractals, adrenaline,
+Nearest to things: people, similarity, rosy, pieces.</seekvideo>, effective,, predict, solid, nerd.,
+Nearest to this: the, that, a, it, UNK, ♪, 53, 1,,
+Nearest to to: and, that, UNK, can, could, for, ♪, la,,
+Nearest to more: history,</seekvideo>, trademark, switching, these</seekvideo>, overhead, ethics, noises)</seekvideo>, and,
+Nearest to an: a, the, learn,</seekvideo>, browser, governments, upside, robust,, this,
+Nearest to for: in, of, to, and, is, with, UNK, at,
+Average loss at step  52000 :  5.025829728126526
+Average loss at step  54000 :  4.987720337867737
+Average loss at step  56000 :  4.930115725398064
+Average loss at step  58000 :  4.924007791519165
+Average loss at step  60000 :  4.897534831047058
+Nearest to or: and, in, demonstration, neat, "Why, democracy,</seekvideo>, enforced, for,
+Nearest to your: their, our, my, the, a, space?, fractals, adrenaline,
+Nearest to things: people, similarity, rosy, effective,, pieces.</seekvideo>, nerd., predict, solid,
+Nearest to this: the, a, that, it, UNK, ♪, 1,, 53,
+Nearest to to: that, and, ♪, can, for, could, UNK, la,,
+Nearest to more: switching, trademark, history,</seekvideo>, overhead, transnational, these</seekvideo>, ethics, unhealthy,
+Nearest to an: a, the, this, governments, browser, learn,</seekvideo>, upside, dioxide.,
+Nearest to for: of, in, to, with, is, at, intuition</seekvideo>, and,
+Average loss at step  62000 :  4.883386056661606
+Average loss at step  64000 :  4.8580457239151
+Average loss at step  66000 :  4.818057877659798
+Average loss at step  68000 :  4.8423609281778335
+Average loss at step  70000 :  4.806940087676049
+Nearest to or: and, demonstration, da,, neat, in, democracy,</seekvideo>, for, chip.,
+Nearest to your: their, my, our, the, fractals, space?, a, adrenaline,
+Nearest to things: people, similarity, rosy, nerd., Auschwitz, effective,, pieces.</seekvideo>, goal,,
+Nearest to this: a, the, that, it, UNK, ♪, da,, 1,,
+Nearest to to: da,, that, can, ♪, and, could, for, will,
+Nearest to more: switching, trademark, history,</seekvideo>, than, overhead, transnational, ethics, unhealthy,
+Nearest to an: a, the, this, governments, browser, upside, learn,</seekvideo>, dioxide.,
+Nearest to for: of, in, to, with, is, at, da,, intuition</seekvideo>,
+Average loss at step  72000 :  4.789125873684883
+Average loss at step  74000 :  4.748918010950089
+Average loss at step  76000 :  4.743840543508529
+Average loss at step  78000 :  4.711352519631386
+Average loss at step  80000 :  4.698752226948738
+Nearest to or: and, demonstration, da,, democracy,</seekvideo>, neat, in, chip., blogs,</seekvideo>,
+Nearest to your: my, their, our, the, fractals, a, space?, adrenaline,
+Nearest to things: people, similarity, nerd., goal,, rosy, effective,, predict, pieces.</seekvideo>,
+Nearest to this: a, the, that, it, da,, ♪, another, 53,
+Nearest to to: da,, that, and, can, could, would, ♪, for,
+Nearest to more: switching, trademark, than, history,</seekvideo>, overhead, transnational, less, unhealthy,
+Nearest to an: a, the, this, governments, browser, dioxide., robust,, learn,</seekvideo>,
+Nearest to for: of, in, to, with, intuition</seekvideo>, da,, at, designed,
+Average loss at step  82000 :  4.692269098520279
+Average loss at step  84000 :  4.694347537517547
+Average loss at step  86000 :  4.646434207797051
+Average loss at step  88000 :  4.655090958833695
+Average loss at step  90000 :  4.646812066793442
+Nearest to or: and, demonstration, da,, democracy,</seekvideo>, chip., neat, blogs,</seekvideo>, "Why,
+Nearest to your: my, their, our, the, fractals, space?, his, adrenaline,
+Nearest to things: people, similarity, nerd., predict, all, goal,, rosy, effective,,
+Nearest to this: a, the, it, that, da,, UNK, 1,, surgeon,
+Nearest to to: that, da,, can, UNK, could, and, would, for,
+Nearest to more: switching, than, trademark, less, history,</seekvideo>, transnational, overhead, printing,,
+Nearest to an: a, the, this, governments, browser, dioxide., upside, robust,,
+Nearest to for: of, to, with, intuition</seekvideo>, da,, in, designed, at,
+Average loss at step  92000 :  4.648123657464981
+Average loss at step  94000 :  4.654902657270432
+Average loss at step  96000 :  4.666519818663597
+Average loss at step  98000 :  4.650931804537773
+Average loss at step  100000 :  4.658460463643074
+Nearest to or: and, demonstration, da,, democracy,</seekvideo>, chip., neat, blogs,</seekvideo>, for,
+Nearest to your: my, their, our, the, his, fractals, a, space?,
+Nearest to things: people, similarity, nerd., predict, goal,, rosy, all, Auschwitz,
+Nearest to this: the, a, it, that, da,, 53, another, surgeon,
+Nearest to to: da,, can, and, could, would, that, will, for,
+Nearest to more: less, than, switching, trademark, history,</seekvideo>, transnational, overhead, kindness.,
+Nearest to an: a, the, this, governments, browser, dioxide., robust,, upside,
+Nearest to for: of, with, to, in, da,, intuition</seekvideo>, at, designed,
