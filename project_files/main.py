@@ -1,6 +1,3 @@
-# Ozge kabak
-# 17/02/2023
-# main function to run LSTM for single parameter under one layer
 
 import os
 import xlsxwriter as xlsxwriter
