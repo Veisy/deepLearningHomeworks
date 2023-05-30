@@ -14,7 +14,7 @@ from keras.losses import mean_squared_error
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 import matplotlib.pyplot as plt
 import os
-
+from attention import Attention
 from keras.layers import Dense, Activation, LSTM, Bidirectional, Conv1D, \
     GRU, SimpleRNN
 from keras.models import Sequential
@@ -37,7 +37,7 @@ def mape(actual, predicted) -> float:
     return round(np.mean(np.abs((actual - predicted) / actual)) * 100, 2)
 
 
-def train_model(seed_num, epoch, modelType, testFlag, patientFlag, layerNumber, featureNumber, plotFlag):
+def train_model(seed_num, epoch, modelType, testFlag, patientFlag, layerNumber, featureNumber, plotFlag,attentionFlag):
     os.environ['PYTHONHASHSEED'] = str(seed_num)
 
     random.seed(seed_num)
@@ -51,92 +51,186 @@ def train_model(seed_num, epoch, modelType, testFlag, patientFlag, layerNumber, 
     train_X0, train_y0, test_X0, test_y0, scaler = dataProcess(featureNumber, patientFlag, plotFlag)
 
     model = Sequential()
-    if layerNumber == 1:
-        if modelType == 0:
-            model.add(SimpleRNN(1024, return_sequences=False, input_shape=(train_X0.shape[1], train_X0.shape[2])))
+    if attentionFlag==0:
+        if layerNumber == 1:
+            if modelType == 0:
+                model.add(SimpleRNN(1024, return_sequences=False, input_shape=(train_X0.shape[1], train_X0.shape[2])))
 
-        elif modelType == 1:
-            model.add(LSTM(1024, return_sequences=False, input_shape=(train_X0.shape[1], train_X0.shape[2])))
+            elif modelType == 1:
+                model.add(LSTM(1024, return_sequences=False, input_shape=(train_X0.shape[1], train_X0.shape[2])))
 
-        elif modelType == 2:
-            model.add(GRU(1024, return_sequences=False, input_shape=(train_X0.shape[1], train_X0.shape[2])))
+            elif modelType == 2:
+                model.add(GRU(1024, return_sequences=False, input_shape=(train_X0.shape[1], train_X0.shape[2])))
 
-        elif modelType == 3:
-            model.add(Bidirectional(
-                SimpleRNN(1024, return_sequences=False, input_shape=(train_X0.shape[1], train_X0.shape[2]))))
+            elif modelType == 3:
+                model.add(Bidirectional(
+                    SimpleRNN(1024, return_sequences=False, input_shape=(train_X0.shape[1], train_X0.shape[2]))))
 
-        elif modelType == 4:
-            model.add(
-                Bidirectional(LSTM(1024, return_sequences=False, input_shape=(train_X0.shape[1], train_X0.shape[2]))))
+            elif modelType == 4:
+                model.add(
+                    Bidirectional(LSTM(1024, return_sequences=False, input_shape=(train_X0.shape[1], train_X0.shape[2]))))
 
-        elif modelType == 5:
-            model.add(
-                Bidirectional(GRU(1024, return_sequences=False, input_shape=(train_X0.shape[1], train_X0.shape[2]))))
+            elif modelType == 5:
+                model.add(
+                    Bidirectional(GRU(1024, return_sequences=False, input_shape=(train_X0.shape[1], train_X0.shape[2]))))
 
-        elif modelType == 6:
-            model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
-                             input_shape=(train_X0.shape[1], train_X0.shape[2])))
-            model.add(SimpleRNN(1024, return_sequences=False))
+            elif modelType == 6:
+                model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
+                                 input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(SimpleRNN(1024, return_sequences=False))
 
-        elif modelType == 7:
-            model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
-                             input_shape=(train_X0.shape[1], train_X0.shape[2])))
-            model.add(LSTM(1024, return_sequences=False))
+            elif modelType == 7:
+                model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
+                                 input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(LSTM(1024, return_sequences=False))
 
-        elif modelType == 8:
-            model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
-                             input_shape=(train_X0.shape[1], train_X0.shape[2])))
-            model.add(GRU(1024, return_sequences=False))
+            elif modelType == 8:
+                model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
+                                 input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(GRU(1024, return_sequences=False))
 
-        model.add(Dense(1024))
-        model.add(Dense(512))
+            model.add(Dense(1024))
+            model.add(Dense(512))
 
-    elif layerNumber == 2:
-        if modelType == 0:
+        elif layerNumber == 2:
+            if modelType == 0:
 
-            model.add(SimpleRNN(512, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2])))
-            model.add(SimpleRNN(512, return_sequences=False))
+                model.add(SimpleRNN(512, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(SimpleRNN(512, return_sequences=False))
 
-        elif modelType == 1:
-            model.add(LSTM(512, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2])))
-            model.add(LSTM(512, return_sequences=False))
+            elif modelType == 1:
+                model.add(LSTM(512, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(LSTM(512, return_sequences=False))
 
-        elif modelType == 2:
-            model.add(GRU(512, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2])))
-            model.add(GRU(512, return_sequences=False))
+            elif modelType == 2:
+                model.add(GRU(512, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(GRU(512, return_sequences=False))
 
-        elif modelType == 3:
-            model.add(Bidirectional(SimpleRNN(512, return_sequences=True, input_shape=(train_X0.shape[1],
-                                                                                       train_X0.shape[2]))))
-            model.add(Bidirectional(SimpleRNN(512, return_sequences=False)))
+            elif modelType == 3:
+                model.add(Bidirectional(SimpleRNN(512, return_sequences=True, input_shape=(train_X0.shape[1],
+                                                                                           train_X0.shape[2]))))
+                model.add(Bidirectional(SimpleRNN(512, return_sequences=False)))
 
-        elif modelType == 4:
-            model.add(Bidirectional(LSTM(512, return_sequences=True, input_shape=(train_X0.shape[1],
-                                                                                  train_X0.shape[2]))))
-            model.add(Bidirectional(LSTM(512, return_sequences=False)))
+            elif modelType == 4:
+                model.add(Bidirectional(LSTM(512, return_sequences=True, input_shape=(train_X0.shape[1],
+                                                                                      train_X0.shape[2]))))
+                model.add(Bidirectional(LSTM(512, return_sequences=False)))
 
-        elif modelType == 5:
-            model.add(Bidirectional(GRU(512, return_sequences=True, input_shape=(train_X0.shape[1],
-                                                                                 train_X0.shape[2]))))
-            model.add(Bidirectional(GRU(512, return_sequences=False)))
+            elif modelType == 5:
+                model.add(Bidirectional(GRU(512, return_sequences=True, input_shape=(train_X0.shape[1],
+                                                                                     train_X0.shape[2]))))
+                model.add(Bidirectional(GRU(512, return_sequences=False)))
 
-        elif modelType == 6:
-            model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
-                             input_shape=(train_X0.shape[1], train_X0.shape[2])))
-            model.add(SimpleRNN(512, return_sequences=True))
-            model.add(SimpleRNN(512, return_sequences=False))
+            elif modelType == 6:
+                model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
+                                 input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(SimpleRNN(512, return_sequences=True))
+                model.add(SimpleRNN(512, return_sequences=False))
 
-        elif modelType == 7:
-            model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
-                             input_shape=(train_X0.shape[1], train_X0.shape[2])))
-            model.add(LSTM(512, return_sequences=True))
-            model.add(LSTM(512, return_sequences=False))
+            elif modelType == 7:
+                model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
+                                 input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(LSTM(512, return_sequences=True))
+                model.add(LSTM(512, return_sequences=False))
 
-        elif modelType == 8:
-            model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
-                             input_shape=(train_X0.shape[1], train_X0.shape[2])))
-            model.add(GRU(512, return_sequences=True))
-            model.add(GRU(512, return_sequences=False))
+            elif modelType == 8:
+                model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
+                                 input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(GRU(512, return_sequences=True))
+                model.add(GRU(512, return_sequences=False))
+    elif attentionFlag==1:
+        if layerNumber == 1:
+            if modelType == 0:
+                model.add(SimpleRNN(1024, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2])))
+
+            elif modelType == 1:
+                model.add(LSTM(1024, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2])))
+
+            elif modelType == 2:
+                model.add(GRU(1024, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2])))
+
+            elif modelType == 3:
+                model.add(Bidirectional(
+                    SimpleRNN(1024, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2]))))
+
+            elif modelType == 4:
+                model.add(
+                    Bidirectional(
+                        LSTM(1024, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2]))))
+
+            elif modelType == 5:
+                model.add(
+                    Bidirectional(
+                        GRU(1024, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2]))))
+
+            elif modelType == 6:
+                model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
+                                 input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(SimpleRNN(1024, return_sequences=True))
+
+            elif modelType == 7:
+                model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
+                                 input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(LSTM(1024, return_sequences=True))
+
+            elif modelType == 8:
+                model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
+                                 input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(GRU(1024, return_sequences=True))
+
+            model.add(Attention(512))
+            model.add(Dense(1024))
+            model.add(Dense(512))
+
+        elif layerNumber == 2:
+            if modelType == 0:
+
+                model.add(SimpleRNN(512, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(SimpleRNN(512, return_sequences=True))
+
+            elif modelType == 1:
+                model.add(LSTM(512, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(LSTM(512, return_sequences=True))
+
+            elif modelType == 2:
+                model.add(GRU(512, return_sequences=True, input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(GRU(512, return_sequences=True))
+
+            elif modelType == 3:
+                model.add(Bidirectional(SimpleRNN(512, return_sequences=True, input_shape=(train_X0.shape[1],
+                                                                                           train_X0.shape[2]))))
+                model.add(Bidirectional(SimpleRNN(512, return_sequences=True)))
+
+            elif modelType == 4:
+                model.add(Bidirectional(LSTM(512, return_sequences=True, input_shape=(train_X0.shape[1],
+                                                                                      train_X0.shape[2]))))
+                model.add(Bidirectional(LSTM(512, return_sequences=True)))
+
+            elif modelType == 5:
+                model.add(Bidirectional(GRU(512, return_sequences=True, input_shape=(train_X0.shape[1],
+                                                                                     train_X0.shape[2]))))
+                model.add(Bidirectional(GRU(512, return_sequences=True)))
+
+            elif modelType == 6:
+                model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
+                                 input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(SimpleRNN(512, return_sequences=True))
+                model.add(SimpleRNN(512, return_sequences=True))
+
+            elif modelType == 7:
+                model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
+                                 input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(LSTM(512, return_sequences=True))
+                model.add(LSTM(512, return_sequences=True))
+
+            elif modelType == 8:
+                model.add(Conv1D(filters=32, kernel_size=1, activation='relu',
+                                 input_shape=(train_X0.shape[1], train_X0.shape[2])))
+                model.add(GRU(512, return_sequences=True))
+                model.add(GRU(512, return_sequences=True))
+
+            model.add(Attention(512))
+
 
     model.add(Dense(6))
     model.add(Activation("linear"))

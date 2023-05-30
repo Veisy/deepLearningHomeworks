@@ -15,13 +15,13 @@ os.environ['CUDA_VISIBLE_DEVICES'] = "0"
 
 #TODO: We trained D1namo dataset with 1 parameter,
 # we then converted values from mmol/L to mg/dL,
-# Afterwards we used RMS, MAE, MAPE, R2 scores to evaluate the model
+# Afterwards we used RMSE, MAE, MAPE, R2 scores to evaluate the model
 
 seedRange       =   1                 # seed number will be changed till 'seedRange'
 epochRunning    =   100                  # epoch number for running
 featureNumber   =   1                    # 1 --> CGM only, 2 --> CGM + Basal Insulin, 3 --> CGM + Basal Insulin + CHO
-layerNumber     =   2                    # number of model layers
-modelType       =   2                    # 0 --> RNN, 1 --> LSTM, 2 --> GRU, 3 --> BiRNN, 4 --> BiLSTM, 5 --> BiGRU,
+layerNumber     =   1                    # number of model layers
+modelType       =   1                    # 0 --> RNN, 1 --> LSTM, 2 --> GRU, 3 --> BiRNN, 4 --> BiLSTM, 5 --> BiGRU,
                                          # 6 --> ConvRNN, 7 --> ConvLSTM, 8 --> ConvGRU
 patientFlag     =   1                    # 0 --> 540, 1 --> 544, 2 --> 552, 3 --> 559, 4 --> 563, 5 --> 567,
                                          # 6 --> 570, 7 --> 575, 8 --> 584, 9 --> 588, 10 --> 591, 11 --> 596
@@ -37,14 +37,16 @@ modelList   = [ "RNN", "LSTM", "GRU", "BiRNN", "BiLSTM", "BiGRU", "ConvRNN",
 
 wsList      = [  'patient1', 'patient2', 'patient3', 'patient4', 'patient5', 'patient6','patient7','patient8','patient9']
 
+attentionList = ["no_Attention", "with_Attention"]
+attentionFlag = 1
+
+
+########################################################################################################################
+
+#  Running simulation
+
 for model in modelList:
     modelName = model
-    attentionList = ["no_Attention", "with_Attention"]
-    attentionFlag = 0
-
-    ########################################################################################################################
-
-    #  Running simulation
 
     workbook = xlsxwriter.Workbook(
         modelName + "_layer_" + f"{layerNumber}" + "_" + attentionList[attentionFlag] + ".xlsx")
@@ -63,7 +65,7 @@ for model in modelList:
     for patientFlag in range(patientNumber):
         print(f"Patient {wsList[patientFlag]} is in progress")
         rmseVal, rmseTest, mae, mape_er, r = train_model(1, epochRunning, modelType, testFlag, patientFlag, layerNumber,
-                                                         featureNumber, plotFlag)
+                                                         featureNumber, plotFlag, attentionFlag)
         rmseValList.append(rmseVal)
         rmseTestList.append(rmseTest)
         maeList.append(mae)
