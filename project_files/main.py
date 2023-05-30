@@ -17,12 +17,11 @@ os.environ['CUDA_VISIBLE_DEVICES'] = "0"
 # we then converted values from mmol/L to mg/dL,
 # Afterwards we used RMS, MAE, MAPE, R2 scores to evaluate the model
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 seedRange       =   1                 # seed number will be changed till 'seedRange'
-epochRunning    =   200                  # epoch number for running
+epochRunning    =   100                  # epoch number for running
 featureNumber   =   1                    # 1 --> CGM only, 2 --> CGM + Basal Insulin, 3 --> CGM + Basal Insulin + CHO
 layerNumber     =   1                    # number of model layers
-modelType       =   7                    # 0 --> RNN, 1 --> LSTM, 2 --> GRU, 3 --> BiRNN, 4 --> BiLSTM, 5 --> BiGRU,
+modelType       =   2                    # 0 --> RNN, 1 --> LSTM, 2 --> GRU, 3 --> BiRNN, 4 --> BiLSTM, 5 --> BiGRU,
                                          # 6 --> ConvRNN, 7 --> ConvLSTM, 8 --> ConvGRU
 patientFlag     =   1                    # 0 --> 540, 1 --> 544, 2 --> 552, 3 --> 559, 4 --> 563, 5 --> 567,
                                          # 6 --> 570, 7 --> 575, 8 --> 584, 9 --> 588, 10 --> 591, 11 --> 596
@@ -38,47 +37,48 @@ modelList   = [ "RNN", "LSTM", "GRU", "BiRNN", "BiLSTM", "BiGRU", "ConvRNN",
 
 wsList      = [  'patient1', 'patient2', 'patient3', 'patient4', 'patient5', 'patient6','patient7','patient8','patient9']
 
-modelName = modelList[modelType]
-attentionList = ["no_Attention", "with_Attention"]
-attentionFlag = 0
+for model in modelList:
+    modelName = model
+    attentionList = ["no_Attention", "with_Attention"]
+    attentionFlag = 0
 
+    ########################################################################################################################
 
-########################################################################################################################
+    #  Running simulation
 
-#  Running simulation
+    workbook = xlsxwriter.Workbook(
+        modelName + "_layer_" + f"{layerNumber}" + "_" + attentionList[attentionFlag] + ".xlsx")
+    rmseValList = []
+    rmseTestList = []
+    maeList = []
+    mapeList = []
+    rList = []
+    worksheet = workbook.add_worksheet(modelName)
+    worksheet.write('A1', 'Patient Number')
+    worksheet.write('B1', 'Val RMSE')
+    worksheet.write('C1', 'MAE')
+    worksheet.write('D1', 'MAPE')
+    worksheet.write('E1', 'R2 SCORE')
 
-workbook = xlsxwriter.Workbook(modelName + "_layer_" + f"{layerNumber}" + "_" + attentionList[attentionFlag] + ".xlsx")
-rmseValList= []
-rmseTestList = []
-maeList = []
-mapeList = []
-rList = []
-worksheet = workbook.add_worksheet(modelName)
-worksheet.write('A1', 'Patient Number')
-worksheet.write('B1', 'Val RMSE')
-worksheet.write('C1', 'MAE')
-worksheet.write('D1', 'MAPE')
-worksheet.write('E1', 'R2 SCORE')
-
-for patientFlag in range(patientNumber):
-
+    for patientFlag in range(patientNumber):
         print(f"Patient {wsList[patientFlag]} is in progress")
-        rmseVal, rmseTest,mae, mape_er, r = train_model(1, epochRunning, modelType, testFlag, patientFlag, layerNumber, featureNumber, plotFlag)
+        rmseVal, rmseTest, mae, mape_er, r = train_model(1, epochRunning, modelType, testFlag, patientFlag, layerNumber,
+                                                         featureNumber, plotFlag)
         rmseValList.append(rmseVal)
         rmseTestList.append(rmseTest)
         maeList.append(mae)
         mapeList.append(mape_er)
         rList.append(r)
 
-worksheet.write_column(1, 0, wsList)
-worksheet.write_column(1, 1, rmseValList)
-worksheet.write_column(1, 2, maeList)
-worksheet.write_column(1, 3, mapeList)
-worksheet.write_column(1, 4, rList)
-workbook.close()
-end=time.time()
-print("The time of execution of above program is :",
-      (end-start) /60, "m")
+    worksheet.write_column(1, 0, wsList)
+    worksheet.write_column(1, 1, rmseValList)
+    worksheet.write_column(1, 2, maeList)
+    worksheet.write_column(1, 3, mapeList)
+    worksheet.write_column(1, 4, rList)
+    workbook.close()
+    end = time.time()
+    print("The time of execution of above program is :",
+          (end - start) / 60, "m")
 
 
 
